@@ -47,6 +47,10 @@ APACHE
 		  URL1 S1|S2|S3
 		  URL2 S4|S5
 		```
+		* RewriteMap  deny txt:/Application/XAMPP/xampfiles/htodcs/Route/deny.txt
+		```
+			192.168.33.110 deny
+		```
 
 	* 格式
 		* ` ${MapName:LookupKey|DefaultValue} 没有LookupKey 则 默认DefaultValue `
@@ -121,6 +125,7 @@ APACHE
 	#RewriteCond %{DOCUMENT_ROOT}/$1 -f
 	#RewriteRule ^(.*).htm $1.php [R]
 	## test.htm  ===> /test/test.php   满足条件 D:/.../Route/test 是目录的条件
+
 ```
 
 
@@ -138,6 +143,15 @@ APACHE
 	#RewriteRule ^(.*)\/(.*)\.htm /${server:$1|root}/${server:$2}.php [R]
 	##test/URL1.htm  ===> /root/(S1|S2|S3).php
 	##URL1/URL1.htm  ===>/(S1|S2|S3)/(S1|S2|S3).php
+
+	//ip 限制
+	#RewriteCond ${deny:%{REMOTE_ADDR}|NOTFOUND} deny
+	#RewriteRule ^ - [F]
+
+	//防盗链
+	#RewriteCond %{HTTP_HOST} !test.route.com [NC]
+	#RewriteRule \.(gif|jpg|png)$ - [F,NC]
+
 ```
 
 
