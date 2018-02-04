@@ -162,7 +162,7 @@ NGINX
 简单的语法
 ---------
 
-*[flag]
+* [flag]
 	* last #本条规则匹配完成后,继续向下匹配新的location URL规则
 	* break #本条规则匹配完成即终止,不再匹配后面的任何规则
 	* redirect #返回302临时重定向,浏览器地址会显示跳转后的URL地址。 (能不用301就不用301)
@@ -174,7 +174,7 @@ NGINX
 	}
 ```
 
-*[location 的匹配规则](http://blog.csdn.net/fay462298322/article/details/54666636)
+* [location 的匹配规则](http://blog.csdn.net/fay462298322/article/details/54666636)
 	* \~  表示执行一个正则匹配,区分大小写
 	* \~* 表示执行一个正则匹配,不区分大小写
 	* ^\~ 表示普通字符匹配,如果该选项匹配,只匹配该选项,不匹配别的选项,一般用来匹配目录
@@ -188,7 +188,7 @@ NGINX
 	```
 
 
-*try_files
+* try_files
 	* 语法: try_files file1 [file1 ... filen] fallback
 	* 默认值: 无
 	* 作用域:location
@@ -198,11 +198,3 @@ NGINX
     	    try_files $uri $uri/ /index.php;
     	}
 	```
-
-
-
-
-
-
-
-
