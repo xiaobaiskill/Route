@@ -1,8 +1,27 @@
 <?php
+
+print_r($_REQUEST);
+echo '<br>';
+print_r($_SERVER['REQUEST_METHOD']);
+echo '<br>';
 echo '<pre>';
 var_dump($_SERVER);
+
+
+
+
+
+
 /*
 nginx
+
+
+//location / {
+//                try_files $uri $uri/ /index.php?$args;
+//        }
+
+
+
 
 array(34) {
   "USER"=> "www"
@@ -45,6 +64,13 @@ array(34) {
 
 /*
 apache
+
+//RewriteEngine on
+//RewriteCond %{REQUEST_FILENAME} !-d
+//RewriteCond %{REQUEST_FILENAME} !-f
+//RewriteRule ^(.*)$ /index.php
+
+
 array(50) {
   "REDIRECT_MIBDIRS"=> string(24) "D:/xampp/php/extras/mibs"
   "REDIRECT_MYSQL_HOME"=> string(16) "\xampp\mysql\bin"
@@ -72,9 +98,7 @@ array(50) {
   "COMSPEC"=> string(27) "C:\Windows\system32\cmd.exe"
   "PATHEXT"=> string(53) ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"
   "WINDIR"=> string(10) "C:\Windows"
-  "SERVER_SIGNATURE"=> string(100) "Apache/2.4.23 (Win32) OpenSSL/1.0.2h PHP/5.6.28 Server at test.route.com Port 81
-
-"
+  "SERVER_SIGNATURE"=> string(100) "Apache/2.4.23 (Win32) OpenSSL/1.0.2h PHP/5.6.28 Server at test.route.com Port 81"
   "SERVER_SOFTWARE"=> string(47) "Apache/2.4.23 (Win32) OpenSSL/1.0.2h PHP/5.6.28"
   "SERVER_NAME"=> string(14) "test.route.com"
   "SERVER_ADDR"=> string(9) "127.0.0.1"
