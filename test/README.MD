@@ -38,22 +38,26 @@ APACHE
 	* 在<Directory> 外面配置
 	* 例如：
 		* RewriteMap pages txt:D:/www/www.test1.com/Route/pages.txt
+
 		```
 		  page test
 		  page1 test1
 		```
 		* RewriteMap servers rnd:D:/www/www.test1.com/Route/rnd.txt
+
 		```
 		  URL1 S1|S2|S3
 		  URL2 S4|S5
 		```
 		* RewriteMap  deny txt:/Application/XAMPP/xampfiles/htodcs/Route/deny.txt
+
 		```
 			192.168.33.110 deny
 		```
 
 	* 格式
-		* ` ${MapName:LookupKey|DefaultValue} 没有LookupKey 则 默认DefaultValue `
+	
+		${MapName:LookupKey|DefaultValue} 没有LookupKey 则 默认DefaultValue
 
 
 操作
