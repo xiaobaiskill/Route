@@ -12,6 +12,10 @@ var_dump($_SERVER);
 
 
 
+
+
+
+
 /*
 nginx
 
