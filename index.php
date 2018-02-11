@@ -1,12 +1,5 @@
 <?php
-
-print_r($_REQUEST);
-echo '<br>';
-print_r($_SERVER['REQUEST_METHOD']);
-echo '<br>';
-echo '<pre>';
 var_dump($_SERVER);
-
 
 
 
