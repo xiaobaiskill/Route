@@ -9,10 +9,8 @@ class URL
 
 	protected function __construct()
 	{
-		$this->uri   = $this->getUri();
-		$parsed_url  = $this->parseRequestUri($this->uri);
-		$this->path  = $parsed_url['path'];
-		$this->query = isset($parsed_url['query']) ? $parsed_url['query'] : '';
+		$path = $this->check();
+		$this->segments = $this->parsePathStr($path);
 	}
 
 	public static function getInstance()
@@ -21,6 +19,22 @@ class URL
 			self::$_instance = new self();
 		}
 		return self::$_instance;
+	}
+
+	/**
+	 * 路由检测
+	 * @return [type] [description]
+	 */
+	public function check()
+	{
+		$this->uri   = $this->getUri();
+		$parsed_uri = parse_url($this->uri);
+		$path = isset($parsed_uri['path']) ? rtrim(trim($parsed_uri['path'], '/'),'\.'.__EXT__) : '';
+		if (isset($parsed_url['query'])) {
+			$_GET = array_merge($_GET, $this->parseQueryStr($parsed_url['query']));
+		}
+		$this->path = preg_replace('#(.*\..*)?[\/]?(.*)#','$2',$path);
+		return $this->path;
 	}
 
 	/**
@@ -48,16 +62,17 @@ class URL
 	}
 
 	/**
-	 * 解析路由?前的路由   以分割符成数组
-	 * @param  [type] $path [路由路径]
-	 * @return [type]       [description]
+	 * 解析路由?前的路由   以分割符 分割 成数组
+	 * @param  [type] $path      [路由]
+	 * @param  [type] $separator [分割符]
+	 * @return [type]            [分割后的数组]
 	 */
-	public function parsePathStr($path)
+	public function parsePathStr($path = '',$separator = URL_PATHINFO_DEPR)
 	{
 		$segments = [];
 		if (!empty($path)) {
 			$segments[0] = null;
-			$segment_arr = explode(URL_PATHINFO_DEPR, $path);
+			$segment_arr = explode($separator, $path);
 			foreach ($segment_arr as $v) {
 				$v = trim($v);
 				$this->filterUri($v);

@@ -6,7 +6,7 @@ class Route
 	public $path;           // 实际路由
 	public $segments;       // 实际路由 拆解 成数组
 	public $module = BIND_MODULE;
-	public $class  = '';
+	public $class  = BIND_CLASS;
 	public $method = 'index';
 	public function __construct()
 	{
@@ -44,7 +44,7 @@ class Route
 	{
 		isset($segments[1]) && $this->setModule($segments[1]);
 		isset($segments[2]) && $this->setClass($segments[2]);
-		isset($segments[3]) && $this->setModule($segments[3]);
+		isset($segments[3]) && $this->setMethod($segments[3]);
 		$this->setArgv(array_slice($segments,3));
 		return ;
 	}
@@ -66,6 +66,13 @@ class Route
 
 	public function setArgv($argvs)
 	{
-		
+		$data = [];
+		if(is_array($argvs) && !empty($argvs)){
+			$argvs_num = count($argvs);
+			for ($i = 0; $i < $argvs_num ;$i = $i + 2) {
+				isset($argvs[$i+1]) ? $data[$argvs[$i]] = $argvs[$i+1] : '';
+			}
+		}
+		$this->argvs = $data;
 	}
 }
