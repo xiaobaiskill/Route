@@ -64,6 +64,10 @@ class Route
 		$this->method = $method;
 	}
 
+	/**
+	 * 剩余的参数部分保存至argvs中
+	 * @param [type] $argvs [description]
+	 */
 	public function setArgv($argvs)
 	{
 		$data = [];

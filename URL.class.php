@@ -62,7 +62,7 @@ class URL
 	}
 
 	/**
-	 * 解析路由?前的路由   以分割符 分割 成数组
+	 * 解析路由?前的路由   以$separator 分割 成数组
 	 * @param  [type] $path      [路由]
 	 * @param  [type] $separator [分割符]
 	 * @return [type]            [分割后的数组]
