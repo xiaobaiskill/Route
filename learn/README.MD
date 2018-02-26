@@ -38,22 +38,26 @@ APACHE
 	* 在<Directory> 外面配置
 	* 例如：
 		* RewriteMap pages txt:D:/www/www.test1.com/Route/pages.txt
+
 		```
 		  page test
 		  page1 test1
 		```
 		* RewriteMap servers rnd:D:/www/www.test1.com/Route/rnd.txt
+
 		```
 		  URL1 S1|S2|S3
 		  URL2 S4|S5
 		```
 		* RewriteMap  deny txt:/Application/XAMPP/xampfiles/htodcs/Route/deny.txt
+
 		```
 			192.168.33.110 deny
 		```
 
 	* 格式
-		* ` ${MapName:LookupKey|DefaultValue} 没有LookupKey 则 默认DefaultValue `
+	
+		${MapName:LookupKey|DefaultValue} 没有LookupKey 则 默认DefaultValue
 
 
 操作
@@ -162,17 +166,26 @@ NGINX
 简单的语法
 ---------
 
+<<<<<<< HEAD:README.MD
 *[flag]
 	*last #本条规则匹配完成后,继续向下匹配新的location URL规则
 	*break #本条规则匹配完成即终止,不再匹配后面的任何规则
 	*redirect #返回302临时重定向,浏览器地址会显示跳转后的URL地址。 (能不用301就不用301)
 	*permanent #返回301永久重定向,浏览器地址会显示跳转后的URL地址    
+=======
+* [flag]
+	* last #本条规则匹配完成后,继续向下匹配新的location URL规则
+	* break #本条规则匹配完成即终止,不再匹配后面的任何规则
+	* redirect #返回302临时重定向,浏览器地址会显示跳转后的URL地址。 (能不用301就不用301)
+	* permanent #返回301永久重定向,浏览器地址会显示跳转后的URL地址    
+>>>>>>> d3011a2828094e76086bfdbbf387f5396eefeab7:learn/rewrite.MD
 
 ```
 	if ($host != 'test.route.com') {               //空格一定要留意。shell编程的语法 
  		 rewrite regex replacement [flag];         //关键字 正则 替代内容 flag标签
 	}
 ```
+<<<<<<< HEAD:README.MD
 
 *[location 的匹配规则](http://blog.csdn.net/fay462298322/article/details/54666636)
 	* ~  表示执行一个正则匹配,区分大小写
@@ -205,4 +218,30 @@ NGINX
 
 
 
+=======
+>>>>>>> d3011a2828094e76086bfdbbf387f5396eefeab7:learn/rewrite.MD
 
+* [location 的匹配规则](http://blog.csdn.net/fay462298322/article/details/54666636)
+	* \~  表示执行一个正则匹配,区分大小写
+	* \~* 表示执行一个正则匹配,不区分大小写
+	* ^\~ 表示普通字符匹配,如果该选项匹配,只匹配该选项,不匹配别的选项,一般用来匹配目录
+	* = 进行普通字符精确匹配
+	* @ 定义一个命名的location,使用在内部定向是,例如error_page,try_files
+
+	```
+		#语法
+		location [ = | ~ | ~* | ^~ ] uri { ... }   # []可选 
+		location @name { ... }
+	```
+
+
+* try_files
+	* 语法: try_files file1 [file1 ... filen] fallback
+	* 默认值: 无
+	* 作用域:location
+
+	```
+		location /{
+    	    try_files $uri $uri/ /index.php;
+    	}
+	```
