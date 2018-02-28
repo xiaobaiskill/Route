@@ -166,26 +166,18 @@ NGINX
 简单的语法
 ---------
 
-<<<<<<< HEAD:README.MD
+
 *[flag]
 	*last #本条规则匹配完成后,继续向下匹配新的location URL规则
 	*break #本条规则匹配完成即终止,不再匹配后面的任何规则
 	*redirect #返回302临时重定向,浏览器地址会显示跳转后的URL地址。 (能不用301就不用301)
 	*permanent #返回301永久重定向,浏览器地址会显示跳转后的URL地址    
-=======
-* [flag]
-	* last #本条规则匹配完成后,继续向下匹配新的location URL规则
-	* break #本条规则匹配完成即终止,不再匹配后面的任何规则
-	* redirect #返回302临时重定向,浏览器地址会显示跳转后的URL地址。 (能不用301就不用301)
-	* permanent #返回301永久重定向,浏览器地址会显示跳转后的URL地址    
->>>>>>> d3011a2828094e76086bfdbbf387f5396eefeab7:learn/rewrite.MD
 
 ```
 	if ($host != 'test.route.com') {               //空格一定要留意。shell编程的语法 
  		 rewrite regex replacement [flag];         //关键字 正则 替代内容 flag标签
 	}
 ```
-<<<<<<< HEAD:README.MD
 
 *[location 的匹配规则](http://blog.csdn.net/fay462298322/article/details/54666636)
 	* ~  表示执行一个正则匹配,区分大小写
